@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useLayoutEffect, useState } from "react"
 import Header from "./components/Header"
 import Form from "./components/Form"
 import Results from "./components/Results"
@@ -6,14 +6,11 @@ import "./styles/App.css"
 
 const App = () => {
   const [channelIds, setChannelIds] = useState([])
-  const [videoData, setVideoData] = useState({
-    id: "",
-    channelTitle: "",
-    publishTime: ""
-  })
+  const [videoData, setVideoData] = useState([])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const url = "https://www.googleapis.com/youtube/v3/search?"
+    const tmpVideoData = []
     channelIds.map(channelId => {
       const params = {
           key: import.meta.env.VITE_YOUTUBE_API_KEY,
@@ -28,17 +25,20 @@ const App = () => {
         const response = await fetch(url + queryParams)
         const data = await response.json();
         console.log(data)
-        setVideoData({
+        tmpVideoData.push({
           id: data.items[0].id.videoId,
           channelTitle: data.items[0].snippet.channelTitle,
           publishTime: data.items[0].snippet.publishTime,
         })
+        setVideoData(tmpVideoData)
+        console.log("tmpVideoData.length is ", tmpVideoData.length)
+        console.log("channelIds.length is ", channelIds.length)
+        console.log("videoData.length is ", videoData)
       }
       getVideoData()
     })
   }, [channelIds])
 
-  console.log("channelIds is ", channelIds)
 
   return (
     <div>
