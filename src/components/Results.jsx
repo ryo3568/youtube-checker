@@ -1,10 +1,11 @@
 
-const Results = ( videoData ) => {
+const Results = ( props ) => {
     return (
         <div>
-            {videoData.videoData.map(data => 
+            {props.videoData.map(data => (
                 <div key={data.channelId}>
                     <p>チャンネル名:{data.channelTitle} 更新日時:{data.publishTime}</p>
+                    {console.log(data.channelTitle)}
                     <iframe 
                         width="640"
                         height="360"
@@ -12,7 +13,7 @@ const Results = ( videoData ) => {
                         allowFullScreen
                     />
                 </div>
-            )}
+            ))}
         </div>
     )
 }

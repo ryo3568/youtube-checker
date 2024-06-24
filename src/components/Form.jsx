@@ -1,4 +1,4 @@
-import { useState} from "react"
+import { useState } from "react"
 
 const Form = (props) => {
     const [registerChannel, setRegisterChannle] = useState("")
@@ -6,14 +6,15 @@ const Form = (props) => {
     const handleRegister = (e) => {
         e.preventDefault()
         props.setChannelIds(channleIds => [...channleIds, registerChannel])
+        setRegisterChannle("")
     }
     return (
         <form onSubmit={handleRegister}>
             <input type="text"
-                   name="mealName"
+                   value={registerChannel}
                    onChange={e => setRegisterChannle(e.target.value)}
                    placeholder="channel名を入力"/>
-            <button>検索</button>
+            <button>登録</button>
         </form>
     )
 }
