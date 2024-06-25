@@ -4,7 +4,9 @@ const RegisteredChannels = (props) => {
         <div>
             <h1>登録チャンネル</h1>
             {props.videoData.map(data => (
-                <p>{data.channelTitle}</p>
+                <div key={data.channelId}>
+                    <p>{data.channelTitle}</p>
+                </div>
             ))}
         </div>
     )

@@ -13,6 +13,7 @@ const App = () => {
     const url = "https://www.googleapis.com/youtube/v3/search?"
     const tmpVideoData = []
     channelIds.map(channelId => {
+      console.log(channelId)
       const params = {
           key: import.meta.env.VITE_YOUTUBE_API_KEY,
           part: 'snippet',
@@ -25,6 +26,7 @@ const App = () => {
       const getVideoData = async() => {
         const response = await fetch(url + queryParams)
         const data = await response.json();
+        console.log(data)
         tmpVideoData.push({
           id: data.items[0].id.videoId,
           channelTitle: data.items[0].snippet.channelTitle,
@@ -35,7 +37,6 @@ const App = () => {
       getVideoData()
     })
   }, [channelIds])
-
 
   return (
     <div>
