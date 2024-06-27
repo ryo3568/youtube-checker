@@ -1,8 +1,11 @@
+import { useContext } from "react"
 import Results from "../components/Results"
+import { AppContext } from "../context"
 
-const Home = (props) => {
+const Home = () => {
+    const contextValues = useContext(AppContext)
     return (
-        <Results videoData={props.videoData}/>
+        <Results videoData={contextValues.videoData}/>
     )
 }
 

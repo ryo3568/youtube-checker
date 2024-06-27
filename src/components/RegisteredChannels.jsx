@@ -1,9 +1,12 @@
+import { useContext } from "react"
+import { AppContext } from "../context"
 
-const RegisteredChannels = (props) => {
+const RegisteredChannels = () => {
+    const contextValues = useContext(AppContext)
     return (
         <div>
             <h1>登録チャンネル</h1>
-            {props.videoData.map(data => {
+            {contextValues.videoData.map(data => {
                 return (
                     <div key={data.videoId}>
                         <p>{data.channelTitle}</p>

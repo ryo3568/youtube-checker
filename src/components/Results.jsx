@@ -1,8 +1,11 @@
+import { useContext } from "react"
+import { AppContext } from "../context"
 
-const Results = ( props ) => {
+const Results = ( ) => {
+    const contextValues = useContext(AppContext)
     return (
         <div>
-            {props.videoData.map(data => {
+            {contextValues.videoData.map(data => {
                 return (<div key={data.videoId}>
                     <p>チャンネル名:{data.channelTitle} 更新日時:{data.publishTime}</p>
                     <iframe 

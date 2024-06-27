@@ -1,11 +1,13 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { AppContext } from "../context"
 
-const Form = (props) => {
+const Form = () => {
     const [registerChannel, setRegisterChannle] = useState("")
+    const contextValues = useContext(AppContext)
 
     const handleRegister = (e) => {
         e.preventDefault()
-        props.setChannelIds(channleIds => [...channleIds, registerChannel])
+        contextValues.setChannelIds(channleIds => [...channleIds, registerChannel])
         setRegisterChannle("")
     }
     return (
