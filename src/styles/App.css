@@ -1,0 +1,22 @@
+:root {
+    --bg-color: #fff;
+    --text-color: #333;
+}
+
+[data-theme2="light"]{
+    --bg-color: #f6f9fd;
+    --text-color: #333;
+    --button-color: #476fff;
+}
+
+[data-theme2="dark"]{
+    --bg-color: #14162a;
+    --text-color: #fff;
+    --button-color: #ff0783;
+}
+
+.mode-body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+}

@@ -1,5 +1,6 @@
 import { useContext, useState } from "react"
 import { AppContext } from "../context"
+import { addChannel } from "../utils/addChannel"
 
 const Form = () => {
     const [registerChannel, setRegisterChannle] = useState("")
@@ -8,8 +9,10 @@ const Form = () => {
     const handleRegister = (e) => {
         e.preventDefault()
         contextValues.setChannelIds(channleIds => [...channleIds, registerChannel])
+        addChannel(registerChannel)
         setRegisterChannle("")
     }
+
     return (
         <form onSubmit={handleRegister}>
             <input type="text"
